@@ -8,6 +8,10 @@ public class Account {
         this.amount = 0.0;
     }
 
+    public String getClientId() {
+        return clientId;
+    }
+
     public void deposit(Double value) {
         this.amount += value;
     }
