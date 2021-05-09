@@ -6,11 +6,18 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
+
 		List<Account> accounts = new ArrayList<>();
+		List<Client> client = new ArrayList<>();
 
 		while (true) {
 			Menu mainMenu =  new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Operacoes"));
+<<<<<<< HEAD
+			Menu accountMenu = new Menu("Conta", Arrays.asList("Abrir conta", "Deletar conta"));
+			Menu clientMenu = new Menu("Cliente", Arrays.asList("Cadastrar Cliente", "Deletar Cliente"));
+=======
 			Menu accountMenu = new Menu("Conta", Arrays.asList("Abrir conta", "Deletar conta", "Realizar saque"));
+>>>>>>> 8776108ea495adaa65d4dc07dd3c0edd0945d5de
 
 			int firstSelection = mainMenu.getSelection();
 			System.out.println(firstSelection + " foi selecionada");
@@ -93,7 +100,42 @@ public class Main {
 					}
 				}
 			}
+//-------------------------------------------------------------------------------------------------------
+			else if (firstSelection == 2) {
+				int secondSelection = clientMenu.getSelection();
+				if (secondSelection == 1) {
+					System.out.println("Informe o id do cliente: ");
+					Scanner s = new Scanner(System.in);
+					String str = s.nextLine();
+
+					boolean found = false;
+					for (int i = 0; i < accounts.size(); i++) {
+						if (accounts.get(i).getClientId().equals(str)) {
+							found = true;
+							break;
+						}
+					}
+
+					if (found) {
+						System.out.println("Conta encontrada !");
+						System.out.println("Digite o nome do cliente: ");
+						String name = s.nextLine();
+						System.out.println("Digite a senha do cliente: ");
+						String password = s.nextLine();
+						Client newClient = new Client(name, password);
+						
+						client.add(newClient);
+						System.out.println("Novo cliente adicionado !");
+					}
+
+					if (!found) {
+						System.out.println("Conta não encontrada !");
+					}
+
+				} else if (secondSelection == 2) {
+					System.out.println("Ainda não implementado");
+				}
+			}
 		}
 	}
-
 }
