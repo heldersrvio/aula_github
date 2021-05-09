@@ -15,4 +15,8 @@ public class Account {
     public void deposit(Double value) {
         this.amount += value;
     }
+
+    public Double getSaldo(){
+        return amount;
+    }
 }
