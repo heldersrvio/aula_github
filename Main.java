@@ -72,6 +72,25 @@ public class Main {
 							System.out.println("Foram retirados " + value + " créditos.");
 						}
 					}
+				}else if(secondSelection == 4){
+					System.out.println("Informe o id do dono da conta: ");
+					Scanner s = new Scanner(System.in);
+					String str = s.nextLine();
+
+					int conta = 0;
+					boolean found = false;
+					for (int i = 0; i < accounts.size(); i++) {
+						if (accounts.get(i).getClientId().equals(str)) {
+							conta = i;
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						System.out.println("A conta não foi encontrada.");
+					} else {
+						System.out.println("Seu saldo é de " + accounts.get(conta).getSaldo() + " créditos.");
+					}
 				}
 			}
 		}
