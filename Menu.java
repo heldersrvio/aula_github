@@ -27,7 +27,7 @@ public class Menu {
 				System.out.println(i++ + " - " + option);
 			}
 
-			System.out.println("Informe a opcao desejada. ");
+			System.out.println("Informe a opção desejada: ");
 			Scanner s = new Scanner(System.in);
 			String str = s.nextLine();
 			try {
@@ -37,7 +37,7 @@ public class Menu {
 				op =0;
 			}
 			if (op>=i){
-				System.out.println("Opcao errada!");
+				System.out.println("Opção errada !");
 				op=0;
 			}
 
