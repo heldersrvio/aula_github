@@ -12,8 +12,12 @@ public class Main {
 
 		while (true) {
 			Menu mainMenu =  new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Operacoes"));
+<<<<<<< HEAD
 			Menu accountMenu = new Menu("Conta", Arrays.asList("Abrir conta", "Deletar conta"));
 			Menu clientMenu = new Menu("Cliente", Arrays.asList("Cadastrar Cliente", "Deletar Cliente"));
+=======
+			Menu accountMenu = new Menu("Conta", Arrays.asList("Abrir conta", "Deletar conta", "Realizar saque"));
+>>>>>>> 8776108ea495adaa65d4dc07dd3c0edd0945d5de
 
 			int firstSelection = mainMenu.getSelection();
 			System.out.println(firstSelection + " foi selecionada");
@@ -44,6 +48,55 @@ public class Main {
 						System.out.println("A conta não foi encontrada.");
 					} else {
 						System.out.println("Conta deletada com sucesso.");
+					}
+				}
+			}else if(firstSelection == 3){
+				int secondSelection = accountMenu.getSelection();
+				if(secondSelection == 3){
+					System.out.println("Informe o id do dono da conta: ");
+					Scanner s = new Scanner(System.in);
+					String str = s.nextLine();
+
+					int conta = 0;
+					boolean found = false;
+					for (int i = 0; i < accounts.size(); i++) {
+						if (accounts.get(i).getClientId().equals(str)) {
+							conta = i;
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						System.out.println("A conta não foi encontrada.");
+					} else {
+						System.out.println("Informe o valor do saque: ");
+						Scanner v = new Scanner(System.in);
+						double value = v.nextDouble();
+						if(accounts.get(conta).getSaldo() < value){
+							System.out.println("Saldo insuficiente.");
+						}else{
+							accounts.get(conta).deposit(value*(-1));
+							System.out.println("Foram retirados " + value + " créditos.");
+						}
+					}
+				}else if(secondSelection == 4){
+					System.out.println("Informe o id do dono da conta: ");
+					Scanner s = new Scanner(System.in);
+					String str = s.nextLine();
+
+					int conta = 0;
+					boolean found = false;
+					for (int i = 0; i < accounts.size(); i++) {
+						if (accounts.get(i).getClientId().equals(str)) {
+							conta = i;
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						System.out.println("A conta não foi encontrada.");
+					} else {
+						System.out.println("Seu saldo é de " + accounts.get(conta).getSaldo() + " créditos.");
 					}
 				}
 			}
