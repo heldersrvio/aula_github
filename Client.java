@@ -7,4 +7,12 @@ public class Client {
         this.clientName = name;
         this.clientPassword = password;
     }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public String getClientPassword() {
+        return clientPassword;
+    }
 }
