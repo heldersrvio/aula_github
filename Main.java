@@ -12,12 +12,9 @@ public class Main {
 
 		while (true) {
 			Menu mainMenu =  new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Operacoes"));
-<<<<<<< HEAD
+
 			Menu accountMenu = new Menu("Conta", Arrays.asList("Abrir conta", "Deletar conta"));
 			Menu clientMenu = new Menu("Cliente", Arrays.asList("Cadastrar Cliente", "Deletar Cliente"));
-=======
-			Menu accountMenu = new Menu("Conta", Arrays.asList("Abrir conta", "Deletar conta", "Realizar saque"));
->>>>>>> 8776108ea495adaa65d4dc07dd3c0edd0945d5de
 
 			int firstSelection = mainMenu.getSelection();
 			System.out.println(firstSelection + " foi selecionada");
@@ -133,7 +130,27 @@ public class Main {
 					}
 
 				} else if (secondSelection == 2) {
-					System.out.println("Ainda não implementado");
+					System.out.println("Informe o nome do cliente: ");
+					Scanner s = new Scanner(System.in);
+					String str = s.nextLine();
+
+					boolean found = false;
+					for (int i = 0; i < client.size(); i++) {
+						if (client.get(i).getClientName().equals(str)) {
+							System.out.println("Informe a senha: ");
+							String senha = s.nextLine();
+							if(client.get(i).getClientPassword().equals(senha)){
+								found = true;
+								client.remove(i);
+							}
+							break;
+						}
+					}
+					if (!found) {
+						System.out.println("O cliente não foi encontrado !");
+					} else {
+						System.out.println("O cliente foi deletado com sucesso !");
+					}
 				}
 			}
 		}
